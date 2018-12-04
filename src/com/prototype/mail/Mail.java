@@ -4,13 +4,15 @@ import com.prototype.advertise.AdvertiseTemplate;
 
 /**
  * Created by NJTZ on 2018/12/4.
+ * 实现Cloneable接口，重写clone()方法
+ * 原型模式，使用对象的拷贝功能来解决多线程发送邮件带来的混乱问题
  */
-public class Mail {
-    private String receiver;
+public class Mail  implements Cloneable {
+    private  String receiver;
     private String subject;
     private String appellation;
     private String context;
-    private String tail;
+    private final String tail="人民银行版权所有";
 
     public Mail(AdvertiseTemplate advertiseTemplate){
         this.context=advertiseTemplate.getAdvContent();
@@ -53,7 +55,20 @@ public class Mail {
         return tail;
     }
 
-    public void setTail(String tail) {
+/*    public void setTail(String tail) {
         this.tail = tail;
+    }*/
+    //重写clone方法
+    @Override
+    public Mail clone(){
+        Mail mail=null;
+
+        try {
+            mail=(Mail)super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        return mail;
     }
 }
