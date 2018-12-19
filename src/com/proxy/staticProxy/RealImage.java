@@ -1,0 +1,23 @@
+package com.proxy.staticProxy;
+
+/**
+ * Created by NJTZ on 2018/12/15.
+ * 需要被代理的类
+ */
+public class RealImage implements Image {
+    private String fileName;
+
+    public RealImage(String fileName) {
+        this.fileName = fileName;
+        loadFromDisk(fileName);
+    }
+
+    private void loadFromDisk(String fileName) {
+        System.out.println("Loading "+fileName);
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Displaying:"+fileName);
+    }
+}
