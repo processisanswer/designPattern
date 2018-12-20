@@ -16,7 +16,7 @@ public class ObserverMain {
 
         wechatServer.setMessage("震惊！小编居然在...");
         System.out.println("---------------------");
-        //张三取消了关注
+        //张三取消了关注,测试
         wechatServer.removeObserver(zhangsan);
         wechatServer.setMessage("Sorry,...");
 
